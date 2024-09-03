@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpfpm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpfpm
+  template:
+    metadata:
+      labels:
+        app: phpfpm
+    spec:
+      containers:
+        - name: phpfpm
+          image: alejamalgo/phpfpm-phpmailer:latest
+          ports:
+            - containerPort: 9000
+          volumeMounts:
+            - name: webstorage
+              mountPath: /var/www/html
+      volumes:
+        - name: webstorage
+          persistentVolumeClaim:
+            claimName: webstorage
+
