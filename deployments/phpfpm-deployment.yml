@@ -14,14 +14,15 @@ spec:
     spec:
       containers:
         - name: phpfpm
-          image: alejamalgo/phpfpm-phpmailer:latest
+  #        image: alejamalgo/phpfpm-phpmailer:latest
+          image: alejamalgo/phpmailer-ale
           ports:
             - containerPort: 9000
-          volumeMounts:
-            - name: webstorage
-              mountPath: /var/www/html
-      volumes:
-        - name: webstorage
-          persistentVolumeClaim:
-            claimName: webstorage
+#          volumeMounts:
+#            - name: webstorage
+#              mountPath: /var/www/html
+#      volumes:
+#        - name: webstorage
+#          persistentVolumeClaim:
+#            claimName: webstorage
 
